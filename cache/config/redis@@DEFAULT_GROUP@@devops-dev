@@ -1,0 +1,5 @@
+Redis:
+  Host: redis-persistence.ops.svc.cluster.local
+  Port: 6379
+  DB: 0
+  Password: xy.cmdb

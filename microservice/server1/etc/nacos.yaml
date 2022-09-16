@@ -1,0 +1,7 @@
+Addr: nacos-cs.ops.svc.cluster.local
+Port: 8848
+Group: DEFAULT_GROUP
+DataID: server1
+ExtDataIDs:
+  - mysql
+NamespaceID: hertz-test

@@ -1,0 +1,13 @@
+Mysql:
+  User: cmdb_dev
+  Password: "654321"
+  Host: mysql-0.mysql.xy-xyops.svc.cluster.xyops
+  Port: 3306
+  DatabaseName: cmdb_dev2
+
+OptimusMysql:
+  User: zhengzhoutao
+  Password: "wahaha123"
+  Host: mysql-0.mysql.xy-xyops.svc.cluster.xyops
+  Port: 3306
+  DatabaseName: optimus_dev

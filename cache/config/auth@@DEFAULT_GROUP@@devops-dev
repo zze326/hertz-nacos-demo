@@ -1,0 +1,9 @@
+Auth:
+  AccessSecret: vIIEnmGZkseadgF9
+  AccessExpire: 86400 # 单位：秒，24 小时
+  GetUserInfoByTokenUrl: http://dev.gw.api.cmdb.business.xy/global-user-portal/info/getUserInfo
+  Origin: http://dev.cmdb.business.xy
+  InternalCallAuthTokens:
+    optimus_bGP0XVfYdSsLn55Tx303dxvC: 9999999
+    local_dev: 9999999
+    jenkins: 9999999
