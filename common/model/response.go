@@ -1,6 +1,9 @@
 package model
 
-import "github.com/cloudwego/hertz/pkg/app"
+import (
+	"github.com/cloudwego/hertz/pkg/app"
+	"hertz-demo/common/hertz"
+)
 
 /**
  * @Author: zze
@@ -9,10 +12,11 @@ import "github.com/cloudwego/hertz/pkg/app"
  */
 
 type Response[T any] struct {
-	C    *app.RequestContext `json:"-"`
-	Code int                 `json:"code"`
-	Msg  string              `json:"msg,omitempty"`
-	Data *T                  `json:"data,omitempty"`
+	C       *app.RequestContext `json:"-"`
+	Code    int                 `json:"code"`
+	Msg     string              `json:"msg,omitempty"`
+	TraceID string              `json:"trace_id,omitempty"`
+	Data    *T                  `json:"data,omitempty"`
 }
 
 func (resp *Response[T]) JsonSelf() {
@@ -31,6 +35,7 @@ func (resp *Response[T]) JsonOkWithCode(code int, msg string, data *T) {
 	resp.Code = code
 	resp.Msg = msg
 	resp.Data = data
+	resp.TraceID = string(resp.C.GetHeader(hertz.HeaderXRequestID))
 	resp.JsonSelf()
 }
 
@@ -38,5 +43,6 @@ func (resp *Response[T]) JsonErrWithCode(code int, err error) {
 	resp.Code = code
 	resp.Msg = err.Error()
 	resp.Data = nil
+	resp.TraceID = string(resp.C.GetHeader(hertz.HeaderXRequestID))
 	resp.JsonSelf()
 }

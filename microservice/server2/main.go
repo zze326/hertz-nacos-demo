@@ -22,6 +22,8 @@ func main() {
 	h := hertz.MustNewServer(nacosConf, &g.Config.Server)
 	g.HertzClient = hertz.MustNewClient(nacosConf)
 	g.InitServiceContext()
+
 	register(h)
+
 	h.Spin()
 }

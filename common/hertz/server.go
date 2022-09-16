@@ -32,6 +32,12 @@ func NewServer(nacosConfig *commonConfig.Nacos, hertzServerConfig *commonConfig.
 			Weight:      10,
 			Tags:        nil,
 		}))
+
+	h.Use(AccessLog())
+	h.Use(NewRequestID())
+
+	url := swagger.URL("/swagger/doc.json") // The url pointing to API definition
+	h.GET("/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler, url))
 	return h, nil
 }
 
@@ -40,10 +46,5 @@ func MustNewServer(nacosConfig *commonConfig.Nacos, hertzServerConfig *commonCon
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	h.Use(AccessLog())
-
-	url := swagger.URL("/swagger/doc.json") // The url pointing to API definition
-	h.GET("/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler, url))
 	return h
 }

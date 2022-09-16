@@ -4,14 +4,19 @@ package handler
 
 import (
 	"context"
-
 	"github.com/cloudwego/hertz/pkg/app"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"github.com/cloudwego/hertz/pkg/common/utils"
+	"hertz-demo/common/hertz"
 )
 
 // Ping .
 func Ping(ctx context.Context, c *app.RequestContext) {
+	hlog.Info(c.Response.Header.Get(hertz.HeaderXRequestID))
+	hlog.Info(c.Request.Header.Get(hertz.HeaderXRequestID))
+	hlog.Info(ctx.Value(hertz.HeaderXRequestID))
 	c.JSON(200, utils.H{
 		"message": "pong",
+		"msg_id":  hertz.GetRequestID(c),
 	})
 }

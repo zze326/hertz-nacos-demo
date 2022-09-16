@@ -38,3 +38,4 @@ swagger.json
 swagger.yaml
 .nacos
 log
+cache

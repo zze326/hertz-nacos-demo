@@ -5,6 +5,7 @@ package example
 import (
 	"context"
 	"github.com/cloudwego/hertz/pkg/common/hlog"
+	"hertz-demo/common/hertz"
 	"hertz-demo/common/model"
 	"hertz-demo/microservice/server1/g"
 
@@ -24,6 +25,7 @@ func HelloMethod(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 	hlog.Info("hahahahahha")
+	hlog.Info(ctx.Value(hertz.HeaderXRequestID))
 
 	data := new(example.HelloResp)
 	chartModel, err := g.HelmChartDao.GetByID(44)
