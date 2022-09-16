@@ -1,6 +1,0 @@
-mysql:
-  user: cmdb_dev
-  password: "654321"
-  host: mysql-0.mysql.xy-xyops.svc.cluster.xyops
-  port: 3306
-  databaseName: cmdb_dev1
